@@ -13,7 +13,30 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
+# install python
+# check if python script runs
+# Execute validation script
+# Add frontend microservice
+# Unit test for microservice
+# Load balancer test
+# Some functionel tests if necessary
+
+
+# 1) Build React App build (This also runs unit tests)
+# 2) Send it to a repository manager such as Azure Artifacts for future pulling 
+# 3) Use Terraform to spin-up resources quickly in order to deploy said build
+# 4) Build docker image with the build react app
+# 5) Push the image to dockerhub
+# 6) Configure the created resources with ansible such as docker installation
+# 7) Pull docker image to the resource from dockerhub
+# 8) Check if app is running by performing a cURl
+# 9) Perform some more tests such as a functional test, load balancing test
+# Do exactly the same for the python backend app in parallel with the react app
+# 10) Perform the input check with a test file for the backend app
+# 11) If all green, go to next stage i.e. deployment of new code to production env.
+
+
 - script: |
     echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
+    
   displayName: 'Run a multi-line script'
