@@ -1,6 +1,7 @@
 from balance_bots import process_instructions
 import numpy as np 
 
+print("EXAMPLE INPUT FILE")
 example = [
     'value 5 goes to bot 2', 
     'bot 2 gives low to bot 1 and high to bot 0',
@@ -15,6 +16,7 @@ print({k: v.microchips for k, v in bots.items()})
 
 for num, bot in bots.items():
     if {2, 5} in bot.compared:
+        print("\n EXAMPLE ANSWER ")
         print("\n Bot {} is comparing value-2 and value-5".format(num))
 
 
@@ -23,6 +25,8 @@ with open('bots.txt', 'rt') as instructions:
 
 for num, bot in bots.items():
     if {61, 17} in bot.compared:
+        print("Question: What is the number of the bot responsible for comparing value-61 & value-17 microchips:")
         print("Bot {} is comparing value-61 and value-17".format(num))
-
+        
+print("Second question: What is the multiplied value of of outputs [0,1,2]?")
 print(np.product(list(bots[-1].microchips | bots[-2].microchips | bots[-3].microchips)))
