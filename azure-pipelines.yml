@@ -4,14 +4,21 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+- logic-test
 
 pool:
   vmImage: ubuntu-latest
 
+
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.8'
+
+steps:
+- script: python validate_bots.py
+
+  displayName: 'Run validation script'
 
 # install python
 # check if python script runs
@@ -35,8 +42,3 @@ steps:
 # 10) Perform the input check with a test file for the backend app
 # 11) If all green, go to next stage i.e. deployment of new code to production env.
 
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    
-  displayName: 'Run a multi-line script'
