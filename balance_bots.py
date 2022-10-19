@@ -1,5 +1,4 @@
 import re
-import numpy as np
 from collections import defaultdict
 
 RE_VALUE = re.compile("value ([0-9]+) goes to bot ([0-9]+)")
