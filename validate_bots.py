@@ -29,4 +29,4 @@ for num, bot in bots.items():
         print(" Answer: Bot {} is comparing value-61 and value-17".format(num))
 
 print("\n Second question: What is the multiplied value of of outputs [0,1,2]?")
-print("Answer: ", np.product(list(bots[-1].microchips | bots[-2].microchips | bots[-3].microchips)))
+print(" Answer: ", np.product(list(bots[-1].microchips | bots[-2].microchips | bots[-3].microchips)))
