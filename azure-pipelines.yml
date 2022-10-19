@@ -86,7 +86,7 @@ stages:
         echo DOCKER PULL IMAGE FROM DOCKERHUB
       displayName: PULL DOCKER IMAGE
     - script: |
-        echo DOCKER RUN CONTAINER ON TERRAFORM RESOURCE (simple VM)
+        echo 'DOCKER RUN CONTAINER ON TERRAFORM RESOURCE (simple VM)'
       displayName: DEPLOY APP
     - script: |
         echo CHECK IF SUCCESFUL DEPLOYMENT WITH SIMPLE cURL CHECK
