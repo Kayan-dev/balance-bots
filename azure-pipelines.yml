@@ -15,7 +15,7 @@ stages:
 
   steps:
   - script: echo INSTALL TERRAFORM
-     displayName: 'Install Terraform'
+    displayName: 'Install Terraform'
   - script: TERRAFORM INITIALIZE
  
 
