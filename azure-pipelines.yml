@@ -15,6 +15,21 @@ stages:
 
     steps:
     - script: |
+        echo CHECK IF DOCKER IS INSTALLED ON RESOURCES
+      displayName: 'DOCKER CHECK'
+    - script: |
+        echo DOCKER BUILD&PUSH or
+      displayName: 'Build Image & Push To Dockerhub'
+
+- stage: TESTING
+  displayName: 'Backend Logic Testing'
+  jobs:
+  - job: Run_Validation_Script
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+
+    - script: |
         echo INSTALL TERRAFORM
       displayName: 'Install Terraform'
     - script: |
@@ -32,25 +47,42 @@ stages:
     - script: |
         echo CONFIGURATION MANAGEMENT
       displayName: 'Ansible: Configure Resources'
-    - script: |
-        echo CHECK IF DOCKER IS INSTALLED ON RESOURCES
-      displayName: 'DOCKER CHECK'
-    - script: |
-        echo DOCKER BUILD&PUSH or
-      displayName: 'Build Image & Push To Dockerhub'
+
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.8'
+
+    - script: python -m pip install --upgrade pip numpy
+      displayName: 'Install numpy'
+
+    - script: python validate_bots.py
+      displayName: 'Run validation script'
+      
     - script: |
         echo DESTROY THE RESOURCES WITH TERRAFORM
       displayName: 'Terraform Destroy'
 
-- stage: TESTING
-  displayName: 'Backend Logic Testing'
+- stage: PRODUCTION
+  displayName: 'Deployment of Application '
   jobs:
-  - job: Run_Validation_Script
+  - job: Deploy_App
     pool:
       vmImage: ubuntu-latest
     steps:
     - script: |
-        python validate_bots.py
+        echo PERFORM ALL OF TERRAFORM AGAIN MINUS DESTROY
+      displayName: Terraform tasks
+    - script: |
+        echo DOCKER PULL IMAGE FROM DOCKERHUB
+      displayName: PULL DOCKER IMAGE
+    - script: |
+        echo DOCKER RUN CONTAINER ON TERRAFORM RESOURCE (simple VM)
+      displayName: DEPLOY APP
+    - script: |
+        echo CHECK IF SUCCESFUL DEPLOYMENT WITH SIMPLE cURL CHECK
+      displayName: cURL CHECK
+
+
 
 # install python
 # check if python script runs
@@ -74,8 +106,3 @@ stages:
 # 10) Perform the input check with a test file for the backend app
 # 11) If all green, go to next stage i.e. deployment of new code to production env.
 
-
-# - script: |
-#     echo Add other tasks to build, test, and deploy your project.
-    
-#   displayName: 'Run a multi-line script'
