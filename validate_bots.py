@@ -15,7 +15,8 @@ print({k: v.microchips for k, v in bots.items()})
 
 for num, bot in bots.items():
     if {2, 5} in bot.compared:
-        print("\n Bot {} is comparing value-2 and value-5".format(num))
+        print("\n EXAMPLE ANSWER ")
+        print(" Bot {} is comparing value-2 and value-5".format(num))
 
 
 with open('bots.txt', 'rt') as instructions:
@@ -23,6 +24,8 @@ with open('bots.txt', 'rt') as instructions:
 
 for num, bot in bots.items():
     if {61, 17} in bot.compared:
-        print("Bot {} is comparing value-61 and value-17".format(num))
+        print("\n Question: What is the number of the bot responsible for comparing value-61 & value-17 microchips:")
+        print(" Answer: Bot {} is comparing value-61 and value-17".format(num))
 
-print(np.product(list(bots[-1].microchips | bots[-2].microchips | bots[-3].microchips)))
+print("\n Second question: What is the multiplied value of of outputs [0,1,2]?")
+print(" Answer: ", np.product(list(bots[-1].microchips | bots[-2].microchips | bots[-3].microchips)))
