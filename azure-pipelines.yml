@@ -15,7 +15,6 @@ steps:
   inputs:
     versionSpec: '3.8'
 
-steps:
 - script: python validate_bots.py
 
   displayName: 'Run validation script'
