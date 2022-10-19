@@ -9,7 +9,7 @@ trigger:
 stages:
 - stage:
   jobs:
-  - job: TERRAFORM
+  - job: STAGING
     pool:
       vmImage: ubuntu-latest
 
@@ -19,7 +19,38 @@ stages:
       displayName: 'Install Terraform'
     - script: |
         echo TERRAFORM INITIALIZE
- 
+      displayName: 'Initialize Terraform'
+    - script: |
+        echo TERRAFORM VALIDATE
+      displayName: 'Validate State Resources'
+    - script: |
+        echo TERRAFORM PLAN
+      displayName: 'Plan Resources'
+    - script: |
+        echo TERRAFORM APPLY
+      displayName: 'Apply Resources'
+    - script: |
+        echo CONFIGURATION MANAGEMENT
+      displayName: 'Ansible: Configure Resources'
+    - script: |
+        echo CHECK IF DOCKER IS INSTALLED ON RESOURCES
+      displayName: 'DOCKER CHECK'
+    - script: |
+        echo DOCKER BUILD&PUSH or
+      displayName: 'Build Image & Push To Dockerhub'
+    - script: |
+        echo DESTROY THE RESOURCES WITH TERRAFORM
+      displayName: 'Terraform Destroy'
+
+- stage: TESTING
+  displayName: 'Backend Logic Testing'
+  jobs:
+  - job: Run_Validation_Script
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - script: |
+        python validate_bots.py
 
 # install python
 # check if python script runs
