@@ -10,15 +10,15 @@ stages:
 - stage:
   jobs:
   - job: TERRAFORM
-  pool:
-    vmImage: ubuntu-latest
+    pool:
+      vmImage: ubuntu-latest
 
-  steps:
-  - script: |
-      echo INSTALL TERRAFORM
-    displayName: 'Install Terraform'
-  - script: |
-      echo TERRAFORM INITIALIZE
+    steps:
+    - script: |
+        echo INSTALL TERRAFORM
+      displayName: 'Install Terraform'
+    - script: |
+        echo TERRAFORM INITIALIZE
  
 
 # install python
