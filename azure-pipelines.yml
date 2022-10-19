@@ -7,9 +7,10 @@ trigger:
 - main
 
 stages:
-- stage:
+- stage: STAGING
+  displayName: 'Building Artifact'
   jobs:
-  - job: STAGING
+  - job: STAGE_JOB
     pool:
       vmImage: ubuntu-latest
 
