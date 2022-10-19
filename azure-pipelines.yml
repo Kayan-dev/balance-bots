@@ -15,6 +15,15 @@ stages:
 
     steps:
     - script: |
+        echo BUILD PACKAGE ARTIFACT 
+      displayName: 'BUILD NEW PACKAGE'
+    - scriptL |
+        echo COPY ARTIFACT TO THE ARTIFACT STAGING DIRECTORY
+      displayName: 'COPY ARTIFACT TO DIRECTORY'
+    - script: |
+        echo INSTALL DOCKER
+      displayName: 'Install Docker'
+    - script: |
         echo CHECK IF DOCKER IS INSTALLED ON RESOURCES
       displayName: 'DOCKER CHECK'
     - script: |
