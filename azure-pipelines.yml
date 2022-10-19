@@ -14,9 +14,11 @@ stages:
     vmImage: ubuntu-latest
 
   steps:
-  - script: echo INSTALL TERRAFORM
+  - script: |
+      echo INSTALL TERRAFORM
     displayName: 'Install Terraform'
-  - script: TERRAFORM INITIALIZE
+  - script: |
+      echo TERRAFORM INITIALIZE
  
 
 # install python
