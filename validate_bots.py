@@ -1,4 +1,5 @@
 from balance_bots import process_instructions
+import numpy as np
 
 example = [
     'value 5 goes to bot 2', 
