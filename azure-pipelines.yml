@@ -44,7 +44,7 @@ stages:
 # 11) If all green, go to next stage i.e. deployment of new code to production env.
 
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
+# - script: |
+#     echo Add other tasks to build, test, and deploy your project.
     
-  displayName: 'Run a multi-line script'
+#   displayName: 'Run a multi-line script'
