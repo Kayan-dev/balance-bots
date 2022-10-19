@@ -6,12 +6,18 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
+stages:
+- stage:
+  jobs:
+  - job: TERRAFORM
+  pool:
+    vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  steps:
+  - script: echo INSTALL TERRAFORM
+     displayName: 'Install Terraform'
+  - script: TERRAFORM INITIALIZE
+ 
 
 # install python
 # check if python script runs
